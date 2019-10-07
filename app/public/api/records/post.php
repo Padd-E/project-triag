@@ -6,21 +6,20 @@ $db = DbConnection::getConnection();
 //:: is a static method
 // Step 2: Create & run the query
 $stmt = $db->prepare(
-  INSERT INTO PatientVisit(patientGuid, visitDescription, priority)
-  VALUES (?,?,?)
+  INSERT INTO Patient(patientGuid, firstName, lastName, DOB, sexAtBirth)
+  VALUES (?,?,?,?,?)
 );
 
-// Generate a version 4 (random) UUID object
 
-
-
+$guid = Uuid::uuid4()->toString();
 //super globals is an associative array of data
  //the SQL is just a string, prepare gets the SQL ready
 $stmt->execute([
-
-  $_POST['patientGuid']
-  $_POST['visitDescription']
-  $_POST['priority']
+  $guid,
+  $_POST['firstName'],
+  $_POST['lastName'],
+  $_POST['DOB'],
+  $_POST['sexAtBirth'],
 ]);  //runs the query
 //$patients = $stmt->fetchAll(); //fetching the results of the query, patients is an array, fetchall returns an array of rows
 
@@ -37,7 +36,7 @@ $stmt->execute([
 
 // Step 4: Output
 header('HTTP/1.1 303 See Other'); //303 says redirect with a get
-header('Location: ../waiting/');//where you need to go
+header('Location: ../records/');//where you need to go
 
 
 
