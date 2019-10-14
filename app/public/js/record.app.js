@@ -2,7 +2,12 @@ var patientRecordsApp = new Vue({
   el: '#patientRecordsApp',
   data: {
     patients: [],
-    recordPatient: {}
+    recordPatient: {},
+    filter:{
+
+    }
+
+
   },
   methods: {
     fetchPatients() {

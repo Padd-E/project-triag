@@ -146,15 +146,16 @@
         <div class="patient patientWaiting"
         :class="patient.priority + 'Priority'"
         v-for="patient in patients">
-          Arrival date<br>
+          {{ formatVisitDateLocal(patient.visitDateUtc) }}<br>
           <span class="patientName">{{ patient.lastName }}</span>,
           <span class="patientName">{{ patient.firstName }}</span><br>
-          {{ patient.sexAtBirth }} {{ patient.dob }}
+          {{ patient.sexAtBirth }} {{ patient.dob }}       <!--vue js stuff -->
         </div>
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="js/waiting.app.js"></script>
   <script src="js/record.app.js"></script>
   <script src="js/triage.app.js"></script>

@@ -10,6 +10,12 @@ var waitingApp = new Vue({
       .then(json => { waitingApp.patients = json })
     }
   },
+
+
+  formatVisitDateLocal(d){
+    return moment.utc(d).local().format("HH:mm MMM Do");
+  }
+},
   created() {
     this.fetchPatients();
   }
