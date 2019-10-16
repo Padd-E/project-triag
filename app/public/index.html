@@ -67,7 +67,13 @@
               </div>
             </div>
           </form>
-
+          <div class="filter">
+          <select v-model="filter.sab">
+            <option value="">(all)</option>
+            <option>M</option>
+            <option>F</option>
+          </select>
+          </div>
           <table class="table table-sm table-hover">
             <thead>
               <tr>
@@ -79,7 +85,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="p in patients" @click="handleRowClick(p)">
+              <tr v-for="p in patients" @click="handleRowClick(p)"
+              v-if="filter.sab=='' || filter.sab == p.sexAtBirth">
                 <td>{{ p.patientGuid }}</td>
                 <td>{{ p.firstName }}</td>
                 <td>{{ p.lastName }}</td>

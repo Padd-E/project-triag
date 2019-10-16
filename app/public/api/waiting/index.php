@@ -4,7 +4,8 @@
 $db = DbConnection::getConnection();
 //:: is a static method
 // Step 2: Create & run the query
-$stmt = $db->prepare('SELECT * FROM Patient p, PAtientVisit pv WHERE '); //the SQL is just a string, prepare gets the SQL ready
+$stmt = $db->prepare('SELECT * FROM Patient p, PatientVisit pv WHERE p.patientGuid = pv.patientGuid'
+); //the SQL is just a string, prepare gets the SQL ready
 $stmt->execute();  //runs the query
 $patients = $stmt->fetchAll(); //fetching the results of the query, patients is an array, fetchall returns an array of rows
 

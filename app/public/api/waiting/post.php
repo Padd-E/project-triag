@@ -6,8 +6,8 @@ $db = DbConnection::getConnection();
 //:: is a static method
 // Step 2: Create & run the query
 $stmt = $db->prepare(
-  INSERT INTO PatientVisit(patientGuid, visitDescription, priority)
-  VALUES (?,?,?)
+  'INSERT INTO PatientVisit(patientGuid, visitDescription, priority)
+  VALUES (?,?,?)'
 );
 
 // Generate a version 4 (random) UUID object

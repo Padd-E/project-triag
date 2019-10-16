@@ -36,7 +36,7 @@ $stmt->execute([
 
 // Step 4: Output
 header('HTTP/1.1 303 See Other'); //303 says redirect with a get
-header('Location: ../records/');//where you need to go
+header('Location: ../records/?guid='.$guid);//where you need to go
 
 
 
